@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos DOM</title>
+    <style>
+        div#area {
+            background-color: darkolivegreen;
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="area" onclick="clicar()" onmouseenter = "entrar()" onmouseout="sair()">
+        Interaja...
+    </div>
+
+    <h1>Somando valores</h1>
+    <input type="number" name="txtn1" id="txtn1">
+    <input type="number" name="txtn2" id="txtn2">
+    <input type="button" value="soma" onclick="somar()">
+    <div id="res">Resultado</div>
+
+    <script>
+        var a = window.document.getElementById('area')
+        /*
+        a.addEventListener('click', clicar)
+        a.addEventListener('mouseenter', enter)
+        a.addEventListener('mouseout', sair)
+        não funcionou*/
+
+        function clicar () {
+            a.innerText = 'Clicou'
+            a.style.background = 'red'
+        }
+        function entrar () {
+            a.innerText = 'Entrou'
+        }
+        function sair () {
+            a.innerText = 'Saiu'
+        }
+
+        function somar() {
+            var tn1 = window.document.getElementById('txtn1')
+            var tn2 = window.document.getElementById('txtn2')
+            var n1 = Number(tn1.value)
+            var n2 = Number(tn2.value)
+            var s = n1 + n2
+            res.innerText = 'A soma entre ' + n1 +' e '+ n2 +' é igual a ' + s
+        }
+    </script>
+</body>
+</html>

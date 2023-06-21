@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <title>Window alert e conversão de variáveis</title>
+    <style>
+        body {
+            background-color: dodgerblue;
+            color: white;
+            font: normal;
+        }
+    </style>
+</head>
+<body>
+    <h1>Programa de boas vindas</h1>
+
+    <section>
+        <h2>Operandos</h2>
+        <div class="operandos">
+            
+        </div>
+    </section>
+
+    <script>
+        // Comentário de 1 linha
+
+        /* Comentário de 
+        mais de uma linha */
+
+        var nome = window.prompt('Qual é o seu nome?')
+
+        document.write('Seu nome tem ' + nome.length + ' letras') //document.write - escreva no documento
+        
+        document.write('Seu nome em maiusculo é ' + nome.toLocaleUpperCase())
+
+        window.alert('Bem vindo ' + nome + '!') // + - concatenação
+
+        window.confirm('Está gotando de JS?') // janela com botão "ok" e "cancelar"
+
+        var n1 = Number.parseInt(window.prompt('Digite um número: '))
+
+        var n2 = Number(window.prompt('Digite outro número: '))
+
+        var s = n1 + n2
+
+        window.alert('A soma entre ' + n1 + ' e ' + n2 + ' é igual a ' + String(s)) // o prompt retorna sempre strings
+        // number + number = adição
+        // number + number = concatenação
+
+        // CONVERSÃO DE NUMEROS
+        // P/ INTEIRO- Number.parselInt(n)
+        // P/ REAIS- Number.parseFloat(n)
+        // MODO SIMPLIFICADO, O JS IDENTIFICA- Number(n)
+
+        // CONVERSÃO DE STRING
+        // String(n)
+        // n.toString()
+
+        // ${} placeholder- não funcionou
+
+        // s.length -quantos caracteres a string tem
+        // s.toLowerCase() - tudo para minusculas
+        // s.toUpperCase() - tudo para maiusculas
+
+        //n1.tofixed(2) - vai utilizar 2 casas após a vírgula
+
+        //n1.tolocaleString('pt-BR, {style: 'currency: 'BRL'}) - vai mostrar em reais
+
+    </script>
+</body>
+</html>
