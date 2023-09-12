@@ -1,0 +1,59 @@
+/* Padrao */
+* {
+    padding: 0;
+    margin: 0;
+}
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+ .box-title {
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+}
+.title {
+    color: white;
+}
+.box {
+    width: 20rem;
+    background-color: white;
+    padding: 40px 20px;
+    box-shadow: 10px rgba(62, 62, 62, 0.575);
+    margin-top: 1rem;
+    border-radius: 20px;
+}
+.box-time {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.time {
+    color: black;
+}
+.box-picture {
+    width: 100%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.picture {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+}
+.container-manha {
+    background-color: rgb(251, 208, 145);
+}
+.container-tarde {
+    background-color: cadetblue;
+}
+.container-noite {
+    background-color: midnightblue;
+}
