@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Padrao */
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            width: 100%;
+            height: 45vw;
+            background-color: darkslateblue;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+         .box-title {
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .title {
+            color: white;
+        }
+        .box {
+            width: 20rem;
+            background-color: white;
+            padding: 10rem;
+            box-shadow: 10px rgba(62, 62, 62, 0.575);
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .time {
+            color: black;
+        }
+        .box-picture {
+            width: 60%;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box-title">
+        <h1 class="title">Verificador de idade</h1>
+    </div>
+
+    <div class="box">
+        <div class="box-form">
+            <form>
+                <label>Ano de nascimento:</label>
+                <input type="number" id="anoF" required>
+
+                <label>Sexo:</label>
+                <input type="radio" id="masculino" value="masculino" required>
+                <label for="masculino">Masculino</label>
+
+                <input type="radio" id="feminino" value="feminino" required>
+                <label for="feminino">Feminino</label>
+
+                <input type="button" value="Verificar" class="button" onclick="verify()">
+            </form>
+
+        </div>
+
+        <div id="resultado"></div>
+
+        <div class="box-picture" id="picture"></div>
+    </div>
+    <script>
+        function verify() {
+            let ano = document.querySelector('#anoF').value;
+            let masc = doc.querySelector('#masculino');
+            let fem = document.querySelector('#fem');
+            let res = document.querySelector('#resultado');
+            let imagem = document.querySelector('#picture');
+
+            const dataAtual = new Date();
+            const anoAtual = dataAtual.getFullYear();
+
+            let idade = (anoAtual - ano);
+
+            if (idade > 0 && idade < 12 )
+
+            res.textContent = ''
+
+        }
+    </script>
+</body>
+</html>

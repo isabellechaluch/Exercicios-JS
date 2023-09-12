@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+<body>
+    <h1>QUIZ</h1>
+
+    <form>
+        <h2>Pergunta 1: Qual é a capital do Brasil?</h2>
+        <br>
+        <input type="radio" name="opcao" id="opcao-1">
+        <label for="opcao-1">A São Paulo</label>
+        <br>
+        <input type="radio" name="opcao" id="opcao-2">
+        <label for="opcao-2">B Rio de Janeiro</label>
+        <br>
+        <input type="radio" name="opcao" id="opcao-3">
+        <label for="opcao-3">C Brasília</label>
+        <br>
+        
+        <button type="button" id="conferir">Conferir</button>
+    </form>
+
+    <div class="answer"></div>
+
+    <script>
+
+        document.querySelector('#conferir').addEventListener("click", function () {
+
+            let radios = document.querySelectorAll('input[name="opcao"]');
+
+        var marked_radio = null;
+
+        for (var i = 0; i < radios.length; i++) {
+            if (radios[2].checked) {
+                document.querySelector(".answer").textContent = 'Você acertou!'
+                break
+            } else {
+                document.querySelector(".answer").textContent = 'Você errou!'
+            }
+        }
+        })
+    </script>
+    
+</body>
+</html>

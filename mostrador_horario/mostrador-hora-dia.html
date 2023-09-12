@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora do dia</title>
+    <style>
+        /* Padrao */
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .container {
+            width: 100%;
+            height: 45vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+         .box-title {
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .title {
+            color: white;
+        }
+        .box {
+            width: 20rem;
+            background-color: white;
+            padding: 10rem;
+            box-shadow: 10px rgba(62, 62, 62, 0.575);
+            margin-top: 1rem;
+        }
+        .box-time {
+            width: 80%;
+        }
+        .time {
+            color: black;
+        }
+        .box-picture {
+            width: 60%;
+            border-radius: 50%;
+        }
+        .container-manha {
+            background-color: rgb(251, 208, 145);
+        }
+        .container-tarde {
+            background-color: coral;
+        }
+        .container-noite {
+            background-color: midnightblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box-title">
+            <h1 class="title" id="gre-title"></h1>
+        </div>
+    
+        <div class="box">
+            <div class="box-time">
+                <div class="time" id="hour"></div>
+            </div>
+    
+            <div class="box-picture">
+                <img class="picture" id="img" alt="Imagem">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function horaAtual() {
+            var dataAtual = new Date();
+            var hora = dataAtual.getHours();
+            var minutos = dataAtual.getMinutes();
+            var segundos = dataAtual.getSeconds();
+            var fundo = document.querySelector('.container');
+            var gretitlejs = document.querySelector('#gre-title');
+            var hour = document.querySelector('#hour');
+            var picture = document.querySelector('#img');
+
+            hour.textContent = hora + ":" + (minutos < 10 ? "0" + minutos : minutos) + ":" + (segundos < 10 ? "0" + segundos : segundos);
+
+            if (hora > 5 && hora < 12) {
+                fundo.classList.add('container-manha');
+                gretitlejs.textContent = 'Bom dia!';
+                picture.src = 'caminho/para/imagem-manha.jpg';
+
+            } else if (hora >= 12 && hora < 18) {
+                fundo.classList.add('container-tarde');
+                gretitlejs.textContent = 'Boa tarde!';
+                picture.src = 'caminho/para/imagem-tarde.jpg';
+
+            } else {
+                fundo.classList.add('container-noite');
+                gretitlejs.textContent = 'Boa noite!';
+                picture.src = 'caminho/para/imagem-noite.jpg';
+
+            }
+        }
+
+        horaAtual();
+    </script>
+</body>
+</html>

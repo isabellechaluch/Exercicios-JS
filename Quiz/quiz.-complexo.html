@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+</head>
+<body>
+    <h1>Quiz de Três Perguntas</h1>
+
+    <div id="pergunta1">
+        <h2>Pergunta 1: Qual é a capital do Brasil?</h2>
+        <input type="radio" name="resposta1" value="a">a) Rio de Janeiro<br>
+        <input type="radio" name="resposta1" value="b">b) São Paulo<br>
+        <input type="radio" name="resposta1" value="c">c) Brasília<br>
+    </div>
+
+    <div id="pergunta2">
+        <h2>Pergunta 2: Qual é o maior planeta do nosso sistema solar?</h2>
+        <input type="radio" name="resposta2" value="a">a) Terra<br>
+        <input type="radio" name="resposta2" value="b">b) Vênus<br>
+        <input type="radio" name="resposta2" value="c">c) Júpiter<br>
+    </div>
+
+    <div id="pergunta3">
+        <h2>Pergunta 3: Qual é a cor do céu durante o dia?</h2>
+        <input type="radio" name="resposta3" value="a">a) Amarelo<br>
+        <input type="radio" name="resposta3" value="b">b) Azul<br>
+        <input type="radio" name="resposta3" value="c">c) Verde<br>
+    </div>
+
+    <button id="verificar">Verificar Respostas</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        document.getElementById('verificar').addEventListener('click', function () {
+            const respostasCorretas = ['c', 'c', 'b']; // Respostas corretas para cada pergunta
+            let pontuacao = 0;
+
+            // Verifica as respostas
+            for (let i = 1; i <= 3; i++) {
+                const respostaSelecionada = document.querySelector(`input[name="resposta${i}"]:checked`);
+
+                if (respostaSelecionada) {
+                    if (respostaSelecionada.value === respostasCorretas[i - 1]) {
+                        pontuacao++;
+                    }
+                }
+            }
+
+            // Exibe o resultado
+            const resultado = document.getElementById('resultado');
+            resultado.innerHTML = `Você acertou ${pontuacao} de 3 perguntas.`;
+        });
+    </script>
+</body>
+</html>
