@@ -1,0 +1,43 @@
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-box {
+    width: 40rem;
+    height: 20rem;
+    border: 3px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.img-box img {
+    display: none;
+    position: absolute;
+}
+
+.img-box img:hover {
+    display: block;
+}
+
+.seta_esquerda, 
+.seta_direita {
+    width: 4rem;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+}
+
+.seta_esquerda:hover, 
+.seta_direita:hover {
+    background-color: rgba(0, 0, 0, 0.152);
+}
+
+.seta_direita img {
+    transform: rotate(180deg);
+}
