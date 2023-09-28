@@ -1,27 +1,30 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+}
+
 .container {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    background-image: linear-gradient(to right top, #090a0b, #00172c, #001e4c, #161e68, #490d7a);
 }
 
 .img-box {
-    width: 40rem;
-    height: 20rem;
-    border: 3px solid black;
-    border-radius: 10px;
+    width: 50rem;
+    height: -10px;
+    margin-top: 20px;
     display: flex;
     justify-content: space-between;
     position: relative;
 }
 
 .img-box img {
-    display: none;
-    position: absolute;
-}
-
-.img-box img:hover {
-    display: block;
+    width: 100%;
 }
 
 .seta_esquerda, 
@@ -29,8 +32,23 @@
     width: 4rem;
     height: 100%;
     z-index: 10;
+    position: absolute;
     display: flex;
     align-items: center;
+    cursor: pointer;
+}
+
+.seta_esquerda {
+    left: 0;
+}
+
+.seta_direita {
+    right: 0;
+}
+
+.seta_direita img, 
+.seta_esquerda img {
+    filter: invert(100%);
 }
 
 .seta_esquerda:hover, 
