@@ -1,3 +1,29 @@
+let button = document.querySelector('#button_form');
+
+function generateImg () {
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function verify() {
     let ano = document.querySelector('#anoF').value;
     let res = document.querySelector('#resultado');
@@ -8,7 +34,7 @@ function verify() {
     let genero = ''; // Declare genero variable outside the if/else blocks
     let idade = 0; // Declare idade variable outside the if/else blocks
 
-    if (ano.length == 0 || ano > anoAtual) {
+    if (ano == 0 || ano > anoAtual) {
         res.textContent = 'Verifique os dados e tente novamente';
     } else {
         let radios = document.querySelectorAll('input[name="opcao"]');

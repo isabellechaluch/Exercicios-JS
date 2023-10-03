@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Criador de elementos HTML</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Criador de elementos HTML</h1>
+
+        <div class="box">
+            <form class="form">
+                <label for="tag">Digite a tag do elemento:</label>
+                <input type="text" name="tag" id="tag_form" placeholder="Ex: div, p, h2, img">
+
+                <label for="content">Digite o conteúdo do elemento:</label>
+                <input type="text" name="content" id="content_element" placeholder="Ex: texto, img src">
+
+                <button type="button" id="button_form">Gerar elemento</button>
+            </form>
+
+            <div class="show" id="output"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

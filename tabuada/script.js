@@ -6,7 +6,7 @@ function tab () {
     let show = document.querySelector('.show_box');
 
     if (isNaN(number) || number == 0) {
-        show.textContent = "Valor inválido!";
+        show.textContent = "Valor inválido! Digite um número inteiro e maior que 0";
     } else {
         let result = '';
         let tabuada = '';
