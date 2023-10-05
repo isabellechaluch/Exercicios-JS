@@ -3,7 +3,7 @@ let show = document.querySelector('.show_box');
 
 function count () {
     let start = parseInt(document.querySelector('#start_form').value);
-    let end = parseInt(document.querySelector('#end_form').value);
+    let end = parseInt(document.querySelector('#end_form').value)
     let iteracao = parseInt(document.querySelector('#count_form').value);
 
     if (start == 0 || end == 0 || iteracao == 0) {

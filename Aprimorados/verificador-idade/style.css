@@ -42,7 +42,7 @@ form {
     margin-bottom: 10px;
 }
 
-.button {
+button {
     padding: 10px 10px;
     background-color: blueviolet;
     color: white;
@@ -52,7 +52,7 @@ form {
     border-radius: 5px;
 }
 
-.button:hover {
+button:hover {
     background-color: darkslateblue;
 }
 
@@ -62,8 +62,15 @@ form {
     border-radius: 50%;
 }
 
+#resultado {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 #foto{ 
     width: 250px;  
     height: 250px;
     border-radius: 50%;
+    margin-top: 10px;
 }

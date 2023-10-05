@@ -1,0 +1,85 @@
+body {
+    padding: 100px 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: teal;
+}
+
+.container {
+    background-color: teal;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    color: white;
+}
+
+.box {
+    width: 40rem;
+    background-color: white;
+    padding: 20px 20px;
+    border-radius: 10px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 100%;
+    padding: 10px 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 30%;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 10px 5px;
+    cursor: pointer;
+    background-color: teal;
+    border: none;
+    border-radius: 5px;
+}
+
+#button_remove {
+    background-color: darkred;
+}
+
+button:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+.show_box {
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.text-box {
+    width: 70%;
+    word-wrap: break-word;
+}
+
+.check-button, 
+.remove-task-button {
+    width: fit-content;
+    margin-left: 5px;
+}
+
+.checked-task {
+    text-decoration: line-through;
+}
