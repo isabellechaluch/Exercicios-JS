@@ -1,0 +1,98 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px 100px;
+    box-sizing: border-box;
+    background-color: cornflowerblue;
+}
+
+.logo, 
+nav {
+    width: 50%
+}
+
+nav {
+    display: flex;
+    justify-content: start;
+}
+
+.navlist {
+    list-style: none;
+    display: flex;
+    text-transform: uppercase;
+}
+
+.navlink {
+    margin: 0 15px;
+}
+
+section {
+    width: 100%;
+    padding: 20px 100px;
+    box-sizing: border-box;
+}
+
+.button-external {
+    width: 6rem;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 10px;
+    background-color: cornflowerblue;
+}
+
+.ball {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: #fff;
+    margin: auto;
+    transform: translateX(-75%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.text-article {
+    width: 60%;
+}
+
+.call-button {
+    width: 10rem;
+    padding: 5px 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: cornflowerblue;
+}
+
+.night-ball {
+    transform: translateX(75%);
+}
+
+.night-background {
+    background-color: midnightblue;
+}
+
+.night-text {
+    color: #fff;
+}
+
+.night-body {
+    background-color: black;
+}
+
+.night-button {
+    color: #fff;
+    background-color: midnightblue;
+}
+

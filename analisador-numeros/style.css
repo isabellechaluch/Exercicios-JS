@@ -33,7 +33,7 @@ input {
 }
 
 .show_box {
-    width: 10rem;
+    width: 100%;
 }
 
 button {
