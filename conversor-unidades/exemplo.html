@@ -1,0 +1,90 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .accordion {
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: 0.4s;
+        }
+
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Conversor de Unidades</h2>
+
+<div class="accordion" onclick="toggleCategory('massa')">Massa</div>
+<div class="panel" id="massa">
+    <select id="fromMassa">
+        <option value="grama">Gramas</option>
+        <option value="quilograma">Quilogramas</option>
+        <option value="libra">Libras</option>
+    </select>
+    <input type="number" id="valueMassa">
+    <select id="toMassa">
+        <option value="grama">Gramas</option>
+        <option value="quilograma">Quilogramas</option>
+        <option value="libra">Libras</option>
+    </select>
+    <button onclick="converter('massa')">Converter</button>
+</div>
+
+<div class="accordion" onclick="toggleCategory('distancia')">Distância</div>
+<div class="panel" id="distancia">
+    <select id="fromDistancia">
+        <option value="metro">Metros</option>
+        <option value="quilometro">Quilômetros</option>
+        <option value="milha">Milhas</option>
+    </select>
+    <input type="number" id="valueDistancia">
+    <select id="toDistancia">
+        <option value="metro">Metros</option>
+        <option value="quilometro">Quilômetros</option>
+        <option value="milha">Milhas</option>
+    </select>
+    <button onclick="converter('distancia')">Converter</button>
+</div>
+
+<script>
+function toggleCategory(category) {
+    var panel = document.getElementById(category);
+    if (panel.style.display === "block") {
+        panel.style.display = "none";
+    } else {
+        panel.style.display = "block";
+    }
+}
+
+function converter(category) {
+    var fromUnit = document.getElementById("from" + category).value;
+    var toUnit = document.getElementById("to" + category).value;
+    var value = parseFloat(document.getElementById("value" + category).value);
+
+    // Realize a conversão aqui
+    var result = value; // Para fins de exemplo, apenas copiamos o valor
+
+    alert("Resultado: " + result);
+}
+</script>
+
+</body>
+</html>
+
+<!-- Neste exemplo, temos um HTML que cria um "accordion" para selecionar a categoria (massa, distância) e, em seguida, mostra as opções de unidades dentro dessa categoria. Quando você clica em "Converter", a função converter(category) é chamada para realizar a conversão (aqui, ela apenas copia o valor para fins de exemplo).
+
+Você pode estender esta estrutura básica para incluir mais categorias e unidades de conversão, bem como a lógica real de conversão para cada unidade.
+Free Research Preview. ChatGPT may produce inaccurate information about people, places, or facts. ChatGPT September 25 Version
+
+ChatGPT -->

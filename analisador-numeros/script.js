@@ -9,9 +9,13 @@ function addNumber () {
     let number = parseInt(document.querySelector('#number_form').value);
     let formField = document.querySelector('form');
 
-    if (isNaN(number) || numbersAdded.includes(number) || number > 100) { 
+    if (isNaN(number)) { 
         //Includes verifica se o número já existe no array
-        show.textContent = 'Valor inválido, maior do que 100 ou já existe!';
+        show.textContent = 'Por favor insira um número!';
+    } else if (numbersAdded.includes(number)) {
+        show.textContent = 'Valor já existe!';
+    } else if (number > 100) {
+        show.textContent = 'Valor maior que 100!';
     } else {
         numbersAdded.push(number); //Add um número ao array
         show.textContent = (numbersAdded);
@@ -46,13 +50,9 @@ function analyze() {
         }
 
         //Calcular a média
-        media = (soma / numbersAdded.length);
+        let media = (soma / numbersAdded.length);
 
-        result.innerHTML = '<p>Ao todo temos ' + sizeArray + ' números</p>';
-        result.innerHTML += '<p>O maior valor é ' + max + '</p>';
-        result.innerHTML += '<p>O menor valor é ' + min + '</p>';
-        result.innerHTML += '<p>A soma dos valores é ' + soma + '</p>';
-        result.innerHTML += '<p>A média dos valores é ' + media + '</p>';
+        result.innerHTML = '<p>Ao todo temos ' + sizeArray + ' números</p>' +  '<p>O maior valor é ' + max + '</p>' + '<p>O menor valor é ' + min + '</p>' + '<p>A soma dos valores é ' + soma + '</p>' + '<p>A média dos valores é ' + media + '</p>';
     }
 }
 
