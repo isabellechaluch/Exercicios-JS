@@ -4,19 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Converor de Unidades</title>
+    <title>Conversor de Unidades</title>
 </head>
 <body>
     <div class="container">
         <h1>Conversor de Unidades</h1>
 
-        <div class="accordion">
+        <div class="box">
+            <form>
+                <label for="number">Digite o valor:</label>
+                <input type="number" id="form-number" name="number">
+
+                <label for="from">De:</label>
+                <select name="from" id="from-select">
+                    <option value="m">Metros</option>
+                    <option value="km">Quilômetros</option>
+                    <option value="cm">Centímetros</option>
+                    <option value="mm">Milímetros</option>
+                </select>
+
+                <label for="to">Para:</label>
+                <select name="to" id="to-select">
+                    <option value="m">Metros</option>
+                    <option value="km">Quilômetros</option>
+                    <option value="cm">Centímetros</option>
+                    <option value="mm">Milímetros</option>
+                </select>   
+            </form>
+
+            <button type="button" id="enter-button">Converter</button>
             
+            <div class="output"></div>
         </div>
 
-            <div class="show_box">
-                <p>Teste</p>
-            </div>
+            
         </div>
     </div>
 

@@ -2,7 +2,7 @@ let images = ["img/picture-1.jpg", "img/picture-2.jpg", "img/picture-3.jpg", "im
 let slides = document.querySelector('#picture');
 let previous = document.querySelector('#previous_button');
 let next = document.querySelector('#next_button');
-let indice = 0;
+let indice = 1;
 
 function nextslide () {
     indice = (indice + 1) % images.length;

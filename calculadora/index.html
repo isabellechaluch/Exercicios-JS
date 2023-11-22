@@ -4,50 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
-
-    <style>
-               body {
-            min-height: 100vh;
-            background-color: bisque;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .container {
-            width: 30rem;
-            background-color: rebeccapurple;
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .screen {
-            width: 80%;
-            background-color: aliceblue;
-            height: 5rem;
-            padding: .5rem 1rem;
-        }
-        .buttons {
-            width: 80%;
-            padding: .5rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .btn {
-            width: 5rem;
-            height: 5rem;
-            background-color: cornflowerblue;
-            border: 1px solid black;
-            padding: 0.25rem 0;
-            margin: .1rem;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <div class="screen"></div>
 
+        <h1>Calculator</h1>
+        <form>
+            <input type="text" class="screen">
+        </form>
+        
         <div class="buttons">
             <button type="button" class="btn" data-num="+">+</button>
             <button type="button" class="btn" data-num="-">-</button>
@@ -63,38 +29,11 @@
             <button type="button" class="btn" data-num="8">8</button>
             <button type="button" class="btn" data-num="9">9</button>
             <button type="button" class="btn" data-num="0">0</button>
-            <button type="button" class="btn btn-clear">C</button>
-            <button type="button" class="btn btn-equal">=</button>
+            <button type="button" class="btn-clear">C</button>
+            <button type="button" class="btn-equal">=</button>
         </div>
     </div>
 
-    <script>
-        (function(){
-            let screen = document.querySelector('.screen');
-            let buttons = document.querySelectorAll('.btn');
-            let btnC = document.querySelector('.btn-clear');
-            let equal = document.querySelector('.btn-equal');
-
-            buttons.forEach(function(button){
-                button.addEventListener('click', function(e){
-                    let value = e.target.dataset.num;
-                    screen.textContent += value; // Usar textContent em vez de value
-                });
-            });
-
-            equal.addEventListener('click', function(e){
-                if(screen.textContent === ''){
-                    screen.textContent = 'Please enter a value';
-                } else {
-                    let answer = eval(screen.textContent);
-                    screen.textContent = answer;
-                }
-            });
-
-            btnC.addEventListener('click', function(e){ // Correção: "clear" para "btnC"
-                screen.textContent = '';
-            });
-        })();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

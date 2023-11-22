@@ -1,0 +1,26 @@
+(function(){
+    let screen = document.querySelector('.screen');
+    let buttons = document.querySelectorAll('.btn');
+    let btnC = document.querySelector('.btn-clear');
+    let equal = document.querySelector('.btn-equal');
+
+    buttons.forEach(function(button){
+        button.addEventListener('click', function(e){
+            let value = e.target.dataset.num; 
+            screen.textContent += value; 
+        });
+    });
+
+    equal.addEventListener('click', function(e){
+        if(screen.textContent === ''){
+            screen.textContent = 'Please enter a value';
+        } else {
+            let answer = eval(screen.textContent);
+            screen.textContent = answer;
+        }
+    });
+
+    btnC.addEventListener('click', function(e){ // Correção: "clear" para "btnC"
+        screen.textContent = '';
+    });
+})();

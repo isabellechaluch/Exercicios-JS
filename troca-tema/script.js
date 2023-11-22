@@ -35,5 +35,8 @@ function changeTheme () {
    callButton.classList.toggle('night-button');
 }
 
-changeButton.addEventListener('click', alternateButton);
-changeButton.addEventListener('click', changeTheme);
+changeButton.addEventListener('click', () => {
+    alternateButton();
+    changeTheme();
+});
+

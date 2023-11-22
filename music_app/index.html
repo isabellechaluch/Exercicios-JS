@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            height: 100vh;
+            background-color: darkslategray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ddd;
+        }
+
+        .main img {
+            width: 25rem;
+            border-radius: 15px;
+        }
+
+       h2 {
+        margin-bottom: 0;
+       }
+
+       .duracao {
+        width: 100%;
+       }
+
+       .barra {
+        width: 100%;
+        height: 7px;
+        border: 0.1px solid #fff;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+       }
+
+       progress {
+        width: 0;
+        height: 7px;
+       }
+
+       .point {
+        width: 20px;
+        height: 20px;
+        background-color: #fff;
+        border-radius: 50%;
+        margin-left: -10px;
+        cursor: pointer;
+       }
+
+       .time {
+        display: flex;
+        justify-content: space-between;
+       }
+
+       .player {
+        display: flex;
+        justify-content: space-evenly;
+       }
+
+       .player img {
+        cursor: pointer;
+       }
+
+       .back {
+        transform: rotate(180deg);
+       }
+
+       .pause {
+        width: 30px;
+        display: none;
+       }
+
+    </style>
+    <title>Music app</title>
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <img src="img/img1.jpeg" alt="">
+            <div class="description">
+                <h2 class="music-title">Music title</h2>
+                <p class="artist">Artist</p>
+            </div>
+        </div>
+        
+    
+        <div>
+            <div class="duracao">
+                <div class="barra">
+                    <progress value="0" max="1"></progress>
+                    <div class="point"></div>
+                </div>
+            </div>
+            
+            <div class="time">
+                <p class="start">0:00</p>
+                <p class="end">0:00</p>
+            </div>
+        </div>
+    
+        <div class="player">
+            <img src="img/icons8-fim-30.png" class="seta back" alt="back">
+            <img src="img/icons8-reproduzir-30.png" class="play" alt="play">
+            <img src="img/icons8-pausa-30.png" class="pause" alt="pause">
+            <img src="img/icons8-fim-30.png" class="seta" alt="next">
+        </div>
+    
+        <audio src="musics/Killing Joke - On All Hallow's Eve.mp3"></audio>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
