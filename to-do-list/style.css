@@ -57,13 +57,20 @@ button:hover {
     transition: all 0.3s ease;
 }
 
-.show_box {
+.show.box {
+    position: relative;
+}
+
+.task_box {
     width: 100%;
     padding: 10px 20px;
     box-sizing: border-box;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     margin: 10px 0;
+    position: absolute; 
+    z-index: 20;
+    cursor: grab;
     display: flex;
     align-items: center;
     justify-content: space-between;

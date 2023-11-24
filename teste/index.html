@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .draggable-item {
+            width: 100px;
+            height: 50px;
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+            position: absolute;
+            cursor: grab;
+        }
+    </style>
+    <title>Multiple Drag and Drop Example</title>
+</head>
+<body>
+
+<div class="draggable-item">Item 1</div>
+<div class="draggable-item">Item 2</div>
+<div class="draggable-item">Item 3</div>
+
+<script>
+    let isDragging = false;
+    let offsetX, offsetY;
+    let currentDraggable;
+
+    const draggableItems = document.querySelectorAll('.draggable-item');
+
+    draggableItems.forEach(item => {
+        item.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            currentDraggable = item;
+            offsetX = e.clientX - currentDraggable.getBoundingClientRect().left;
+            offsetY = e.clientY - currentDraggable.getBoundingClientRect().top;
+            currentDraggable.style.cursor = 'grabbing';
+        });
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+            const x = e.clientX - offsetX;
+            const y = e.clientY - offsetY;
+            currentDraggable.style.left = `${x}px`;
+            currentDraggable.style.top = `${y}px`;
+        }
+    });
+
+    document.addEventListener('mouseup', () => {
+        if (isDragging) {
+            isDragging = false;
+            currentDraggable.style.cursor = 'grab';
+        }
+    });
+</script>
+
+</body>
+</html>
