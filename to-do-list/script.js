@@ -1,7 +1,7 @@
 let addTaskButton = document.querySelector('#button_add_form');
 let showTasks = document.querySelector('#show_box');
 let form = document.querySelector('form');
-let taskBoxes = document.querySelectorAll('.task_box');
+// let taskBoxes = document.querySelectorAll('.task_box');
 let isDragging = false;
 let setX, setY, dragTask;
 //Criar a div da task
@@ -83,27 +83,39 @@ function deleteTask () {
 
 //Arrastar e soltar as tasks
 
-taskBoxes.forEach(taskBox => {
-    taskBox.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        dragTask = taskBox;
-        setX = e.clientX - taskBox.getBoundingClientRect().left;
-        setY = e.clientY - taskBox.getBoundingClientRect().top;
-    });
-});
+// document.addEventListener('mousedown', (e) => {
+//     if (e.target.classList.contains('task_box')) {
+//         isDragging = true;
+//         dragTask = e.target;
+//         setX = e.clientX - dragTask.getBoundingClientRect().left;
+//         setY = e.clientY - dragTask.getBoundingClientRect().top;
+//     }
+// });
 
+// taskBoxes.forEach(taskBox => {
+//     taskBox.addEventListener('mousedown', (e) => {
+//         if(e.target.classList.contains('task_box')) {
+//             isDragging = true;
+//             dragTask = e.target;
+//             setX = e.clientX - taskBox.getBoundingClientRect().left;
+//             setY = e.clientY - taskBox.getBoundingClientRect().top;
+//         }
+//     });
+// });
 
-document.addEventListener('mousemove', (e) => {
-    if (isDragging) {
-        const x = e.clientX - setX;
-        const y = e.clientY - setY;
-        taskBoxes.style.left = `${x}px`;
-        taskBoxes.style.top = `${y}px`;
-    }
-});
+// document.addEventListener('mousemove', (e) => {
+//     if (isDragging) {
+//         const x = e.clientX - setX;
+//         const y = e.clientY - setY;
+//         dragTask.style.left = `${x}px`;
+//         dragTask.style.top = `${y}px`;
+//     }
+// });
 
-document.addEventListener('mouseup', () => {
-    isDragging = false;
-});
+// document.addEventListener('mouseup', () => {
+//     if(isDragging) {
+//         isDragging = false;
+//     }
+// });
 
 addTaskButton.addEventListener('click', addTask);

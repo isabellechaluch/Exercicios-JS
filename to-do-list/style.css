@@ -58,11 +58,12 @@ button:hover {
 }
 
 .show.box {
+    width: 100%;
     position: relative;
 }
 
 .task_box {
-    width: 100%;
+    width: 40rem;
     padding: 10px 20px;
     box-sizing: border-box;
     border-radius: 10px;

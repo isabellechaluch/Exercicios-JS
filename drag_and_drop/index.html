@@ -15,29 +15,26 @@
             cursor: grab;
         }
     </style>
-    <title>Multiple Drag and Drop Example</title>
+    <title>Dynamic Drag and Drop Example</title>
 </head>
 <body>
 
-<div class="draggable-item">Item 1</div>
-<div class="draggable-item">Item 2</div>
-<div class="draggable-item">Item 3</div>
+<div id="container"></div>
+<button onclick="addNewDraggableItem()">Adicionar Item</button>
 
 <script>
     let isDragging = false;
     let offsetX, offsetY;
     let currentDraggable;
 
-    const draggableItems = document.querySelectorAll('.draggable-item');
-
-    draggableItems.forEach(item => {
-        item.addEventListener('mousedown', (e) => {
+    document.addEventListener('mousedown', (e) => {
+        if (e.target.classList.contains('draggable-item')) {
             isDragging = true;
-            currentDraggable = item;
+            currentDraggable = e.target;
             offsetX = e.clientX - currentDraggable.getBoundingClientRect().left;
             offsetY = e.clientY - currentDraggable.getBoundingClientRect().top;
             currentDraggable.style.cursor = 'grabbing';
-        });
+        }
     });
 
     document.addEventListener('mousemove', (e) => {
@@ -55,6 +52,14 @@
             currentDraggable.style.cursor = 'grab';
         }
     });
+
+    function addNewDraggableItem() {
+        const container = document.getElementById('container');
+        const newDraggableItem = document.createElement('div');
+        newDraggableItem.classList.add('draggable-item');
+        newDraggableItem.textContent = 'Novo Item';
+        container.appendChild(newDraggableItem);
+    }
 </script>
 
 </body>
