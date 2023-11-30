@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronometro</title>
+
+    <style>
+        body {
+            background: linear-gradient(to bottom left, #8e44ad, #3498db);
+            background-repeat: no-repeat;
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 100%;
+            height: 100vh;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cronometer-box {
+            background-color: rgba(30, 29, 29, 0.699);
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .cronometer-circle {
+            width: 15rem;
+            height: 15rem;
+            padding: 10px;
+            border-radius: 50%;
+            border: 3px solid #8e44ad;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        form {
+            display: flex;
+        }
+        form input {
+            width: 32%;
+            font-size: 40px;
+            color: #fff;
+            background-color: transparent;
+            border: none;
+        }
+        .buttons-box {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center
+        }
+        button {
+            padding: 10px 20px;
+            background-color: rgb(241, 220, 245);
+            border-radius: 5px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #a286ad;
+        }
+        .pause-button {
+            display: none;
+        }
+        img {
+            width: 15px;
+        }
+        .marked-time-list {
+            font-size: 18px;
+            color: #fff;
+            text-align: center;
+            list-style: none;
+            padding: 0;
+        }
+        .marked-time-list li {
+            padding: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="cronometer-box">
+            <div class="cronometer-circle">
+                <div class="time">
+                    <form>
+                        <input type="number" placeholder="00" name="hour" id="hour-form">
+
+                        <input type="number" placeholder="00" name="minute" id="minute-form">
+
+                        <input type="number" placeholder="00"name="seconds" id="second-form">
+                    </form>
+
+                    <div class="display">
+                        00 : 00 : 00
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons-box">
+                <button class="restart-button">
+                    <img src="icons8-reiniciar-16.png" alt="">
+                </button>
+
+                <button class="play-button">
+                    <img src="icons8-reproduzir-30.png" alt="">
+                </button>
+
+                <button class="pause-button">
+                    <img src="icons8-pausa-30.png" alt="">
+                </button>
+
+                <button class="mark-time-button">
+                    <img src="icons8-bandeira-2-16.png" alt="">
+                </button>
+            </div>
+
+            <ul class="marked-time-list"></ul>
+        </div>
+    </div>
+
+    <script>
+        let Hour = document.querySelector("#hour-form").value;
+        let Minutes = document.querySelector("#hour-form").value;
+        let Seconds = document.querySelector("#second-form").value;
+        let display = document.querySelector('.display');
+        let markButton = document.querySelector(".mark-time-button");
+        let markedList = document.querySelector(".marked-time-list");
+        let playButton = document.querySelector(".play-button");
+        let pauseButton = document.querySelector(".pause-button");
+        let restartButton = document.querySelector(".restart-button");
+        let time = Hour * 3600 + Minutes * 60 + Seconds; // Converte todo o tempo para segundos
+        let displayInterval;
+
+        function start() {
+            pauseButton.style.display = "block";
+            playButton.style.display = "none";
+
+            displayInterval = setInterval(function () {
+                time--; //Reduz do tempo total segundo à segundo
+                if (time == 0) {
+                    alert("Tempo expirado!");
+                    clearInterval(displayInterval);
+                }
+                updateDisplay(time);
+            }, 1000);
+        }
+
+        function updateDisplay () {
+            display.textContent = formatTime(time); // Chama a função que faz a formatação do tempo no visor
+        }
+
+        function formatTime(actualTime) {
+            let seconds = actualTime % 60; // Retorna o resto da divisão
+            let minutes = Math.floor(actualTime / 60) % 60;
+            let hour = Math.floor(actualTime / 3600);
+            return `${hour < 10 ? '0' : ''}${hour} : ${minutes < 10 ? '0' : ''}${minutes} : ${seconds < 10 ? '0' : ''}${seconds}`; // Operador ternário , se minutos e segundos forem menores que 10 add o 0 na frente
+        }
+
+        function pauseTime () {
+            pauseButton.style.display = "none";
+            playButton.style.display = "block";
+
+            clearInterval(displayInterval);
+        }
+
+        function restartTime () {
+            time = 0;
+            updateDisplay();
+            clearInterval(displayInterval);
+
+            pauseButton.style.display = "none";
+            playButton.style.display = "block";
+        }
+
+        function markTime () {
+            let newMark;
+            newMark = document.createElement('li');
+            newMark.textContent = formatTime(time);
+            markedList.appendChild(newMark);
+        }
+
+        playButton.addEventListener('click', start);
+        pauseButton.addEventListener('click', pauseTime);
+        restartButton.addEventListener('click', restartTime);
+        markButton.addEventListener('click', markTime);
+    </script>
+</body>
+
+</html>
