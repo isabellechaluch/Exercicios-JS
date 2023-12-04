@@ -1,27 +1,41 @@
-(function(){
+
+    const buttons = document.querySelectorAll('.btn');
+    const btnC = document.querySelector('.btn-clear');
+    const equal = document.querySelector('.btn-equal');
+    const deleteBtn = document.querySelector('.btn-delete');
+    const screen = document.querySelector('.screen');
     
-    let screen = document.querySelector('.screen');
-    let buttons = document.querySelectorAll('.btn');
-    let btnC = document.querySelector('.btn-clear');
-    let equal = document.querySelector('.btn-equal');
+    let screenValue = "";
 
+    // Aplica a função para cada botão    
     buttons.forEach(function(button) {
-        button.addEventListener('click', function (showNumber) {
-            let value = showNumber.target.dataset.num; // e.target é p botão clicado, dataset recupera o atributo e num é o nome do atributo
-            screen.value += value; // Mostra na tela o valor digitado
-        })
+      button.addEventListener('click', function (showNumber) {
+        let value = showNumber.target.dataset.num;
+        screenValue += value;
+        screen.value = screenValue;
+      });
     });
 
-    equal.addEventListener('click', function(showNumber) {
-        if (screen.value === '') {
-            screen.value = "Digite uma expressão";
-        } else {
-            let answer = eval(screen.value);
-            screen.value = answer;
-        }
-    });
+    function showResult() {
+      if (screenValue === '' || isNaN(screenValue)) {
+        screen.value = "Digite uma expressão";
+      } else {
+        let answer = eval(screenValue);
+        screen.value = answer;
+        screenValue = String(answer); // Atualiza screenValue com o resultado como string
+      }
+    }
 
-    btnC.addEventListener('click', function(showNumber) {
-        screen.value = "";      
-    });
-})(); //end IIFE
+    function deleteScreenNumber() {
+      screenValue = screenValue.slice(0, -1);
+      screen.value = screenValue;
+    }
+
+    function clearScreen() {
+      screenValue = "";
+      screen.value = screenValue;
+    }
+
+    equal.addEventListener('click', showResult);
+    btnC.addEventListener('click', clearScreen);
+    deleteBtn.addEventListener('click', deleteScreenNumber);
