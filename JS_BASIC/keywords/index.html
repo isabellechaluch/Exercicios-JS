@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keywords</title>
+    <style>
+      .container {
+        padding: 40px 60px;
+      }
+      .highlight {
+        background-color: gold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="keywords-box">
+        <form>
+          <fieldset>
+            <legend>Encontre palavras chave no texto</legend>
+            <input type="text" name="text" id="keyword-form"/>
+            <input type="button" value="Procurar" id="search-button"/>
+
+            <div class="results"></div>
+          </fieldset>
+        </form>
+      </div>
+
+      <div class="text-box">
+        <h1>Explorando os Mistérios da Realidade Virtual</h1>
+
+        <p>
+          A realidade virtual (RV) tem se destacado como uma das tecnologias
+          mais fascinantes e transformadoras da atualidade. Ao proporcionar uma
+          experiência imersiva que transcende os limites da realidade física, a
+          RV oferece um terreno fértil para a exploração de novos horizontes e
+          possibilidades. Este texto investigará os principais aspectos dessa
+          tecnologia inovadora, abrangendo desde sua evolução histórica até as
+          aplicações mais recentes e promissoras.
+        </p>
+
+        <hr />
+
+        <h2>História e Evolução</h2>
+
+        <p class="test">
+          A história da realidade virtual remonta às décadas de 1960 e 1970,
+          quando os primeiros experimentos rudimentares foram realizados. Desde
+          então, avanços tecnológicos significativos permitiram o
+          desenvolvimento de dispositivos mais sofisticados, como os populares
+          óculos de RV e controladores de movimento. Essa evolução proporcionou
+          uma imersão mais profunda e realista, aproximando-se cada vez mais da
+          criação de mundos virtuais convincentes.
+        </p>
+
+        <hr />
+
+        <h2>Aplicações Atuais</h2>
+
+        <p>
+          A aplicação da realidade virtual abrange diversos setores, desde
+          entretenimento até medicina e educação. Na indústria do
+          entretenimento, jogos de RV transportam os jogadores para mundos
+          fantásticos e desafios inimagináveis. Em setores mais sérios, como a
+          medicina, a RV é utilizada para simulações cirúrgicas e treinamento
+          médico, proporcionando um ambiente seguro para o aprimoramento de
+          habilidades práticas.
+        </p>
+
+        <hr />
+
+        <h2>Desafios e Oportunidades</h2>
+
+        <p>
+          Apesar dos avanços impressionantes, a realidade virtual enfrenta
+          desafios que incluem questões éticas, como o potencial vício em
+          experiências virtuais e preocupações com a privacidade. Contudo, esses
+          desafios também geram oportunidades para a inovação, incentivando o
+          desenvolvimento de soluções éticas e regulamentações que garantam a
+          segurança dos usuários.
+        </p>
+
+        <hr />
+
+        <h2>O Futuro da Realidade Virtual</h2>
+
+        <p>
+          O futuro da realidade virtual é promissor, com a contínua evolução da
+          tecnologia e a exploração de novas fronteiras. A integração de
+          inteligência artificial e a criação de ambientes virtuais cada vez
+          mais interativos são apenas alguns dos caminhos que prometem
+          transformar ainda mais a experiência de RV. À medida que a tecnologia
+          avança, a sociedade se depara com perguntas sobre os limites entre o
+          virtual e o real, criando um cenário fascinante para os anos
+          vindouros.
+        </p>
+
+        Em resumo, a realidade virtual representa uma jornada emocionante de
+        descoberta e inovação. Seja na exploração de mundos virtuais envolventes
+        ou na aplicação prática em setores essenciais, a RV continua a
+        desempenhar um papel crucial na forma como interagimos com a tecnologia
+        e percebemos a realidade ao nosso redor.
+      </div>
+    </div>
+
+    <script>
+      let searchButton = document.querySelector("#search-button");
+      let paragraphs = document.querySelectorAll(".text-box p");
+      let result = document.querySelector(".results");
+
+      function searchKeyword() {
+        let keywordInput = document.querySelector("#keyword-form").value;
+        let paragraph;
+        let matchedKeywords = [];
+        let resultText = "Nao foram encontradas palavras correspondentes";
+
+        paragraphs.forEach((paragraph) => {
+          // new RegExp(keyword, 'g') é usado para criar dinamicamente a expressão regular com base no valor atualizado da variável keywordInput
+          let matchesInParagraph = paragraph.textContent.match(
+            new RegExp(keywordInput, "g")
+          );
+
+          if (matchesInParagraph == null) {
+            clearHighlight(paragraph); // Limpa destaque anterior
+          } else {
+            matchedKeywords = matchedKeywords.concat(matchesInParagraph);
+            // o método concat junta arrays
+            highlightText(paragraph, keywordInput);
+
+            resultText = `Foram encontradas ${matchedKeywords.length} correspondências`;
+          }
+        });
+
+        showResult(resultText);
+      }
+
+      function showResult(text) {
+        result.textContent = text;
+      }
+
+      function clearHighlight(paragraphToClear) {
+         paragraphToClear.innerHTML = paragraphToClear.textContent;
+      }
+
+      function highlightText(paragraphsToHighlight, keywordForm) {
+        let paragraphText = paragraphsToHighlight.textContent;
+        let words = paragraphText.split(/\s+/);
+        // divide o parágrafo em palavras, \s: Representa qualquer caractere de espaço em branco
+        // +: Indica que estamos procurando um ou mais caracteres de espaço em branco consecutivos.
+
+        let highlightedText = words.map((word) =>
+          word.includes(keywordForm)
+            ? `<span class="highlight">${word}</span>`
+            : word
+        );
+        // map() é usado para iterar sobre cada elemento de um array e criar um novo array com base na transformação de cada elemento.
+        // word => : arrow function é passada como argumento para o método map. Para cada palavra (word) no array words, a função é executada.`
+        // verifica se a palavra atual word inclui a palavra-chave. Se sim ela cria uma string HTML com a palavra destacada usando a tag <span> e a classe CSS highlight. Se não incluir, retorna a palavra original sem destaque.
+        paragraphsToHighlight.innerHTML = highlightedText.join(" ");
+      }
+
+      searchButton.addEventListener('click', searchKeyword);
+    </script>
+  </body>
+</html>
