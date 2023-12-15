@@ -10,8 +10,8 @@ function addNumber () {
     let formField = document.querySelector('form');
 
     if (isNaN(number)) { 
-        //Includes verifica se o número já existe no array
         show.textContent = 'Por favor insira um número!';
+        //Includes verifica se o número já existe no array
     } else if (numbersAdded.includes(number)) {
         show.textContent = 'Valor já existe!';
     } else if (number > 100) {
@@ -34,6 +34,7 @@ function analyze() {
         result.textContent = 'Adicione algum valor!';
     } else {
         // Encontra o valor maior e o menor
+        //Método mais eficaz
         for (let i = 1; i < numbersAdded.length; i++) {
             if (numbersAdded[i] > max) {
                 max = numbersAdded[i];
@@ -52,9 +53,33 @@ function analyze() {
         //Calcular a média
         let media = (soma / numbersAdded.length);
 
-        result.innerHTML = '<p>Ao todo temos ' + sizeArray + ' números</p>' +  '<p>O maior valor é ' + max + '</p>' + '<p>O menor valor é ' + min + '</p>' + '<p>A soma dos valores é ' + soma + '</p>' + '<p>A média dos valores é ' + media + '</p>';
+        //Ordena os números em ordem crescente
+        let ascendingNumbers = numbersAdded.slice().sort(function(a, b){
+            return a - b
+        });
+
+        //Ordena os números em ordem decrescente
+        let descendingNumbers = numbersAdded.slice().sort(function(a, b){
+            return b - a
+        });
+
+        result.innerHTML = 
+        `Ao todo temos ${sizeArray} números 
+        <br>
+        O maior valor é ${max}
+        <br>
+        O menor valor é ${min}
+        <br>
+        A soma dos valores é ${soma}
+        <br>
+        A média dos valores é ${media}
+        <br>
+        Os números em ordem crescente ficarão ${ascendingNumbers}
+        <br>
+        Os números em ordem decrescente ficarão ${descendingNumbers}
+        `
     }
-}
+};
 
 add_button.addEventListener('click', addNumber);
 final_button.addEventListener('click', analyze);
