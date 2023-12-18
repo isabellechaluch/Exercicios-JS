@@ -16,23 +16,13 @@ function alternateButton () {
 
 function changeTheme () {
 
-    // (background) => { ... }: Isso define uma função de callback (uma função que será chamada para cada elemento no loop) que recebe um argumento, que é um elemento da NodeList. Neste caso, usamos (background) para representar cada elemento individual.
+   body.classList.toggle('body');
+   body.classList.toggle('dark-body');
 
-    backgrounds.forEach((background)=> { //Faz um loop adicionado as classes a cada item da lista de classes
-        background.classList.toggle('day-background');
-        background.classList.toggle('night-background');
-   });
+   const isDarkMode = body.classList.contains('dark-body');
+   document.documentElement.style.setProperty('--text-color', isDarkMode ? '#fff' : '#000');
+   document.documentElement.style.setProperty('--background', isDarkMode ? '#191970' : '#6495ed');
 
-   texts.forEach((text) => {
-        text.classList.toggle('day-text');
-        text.classList.toggle('night-text');
-   }); 
-
-   body.classList.toggle('day-body');
-   body.classList.toggle('night-body');
-
-   callButton.classList.toggle('day-button');
-   callButton.classList.toggle('night-button');
 }
 
 changeButton.addEventListener('click', () => {
