@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerador de senha</title>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+        font-size: 16px;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .container {
+        width: 100%;
+        height: 100vh;
+        background-color: beige;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .box {
+        width: 20rem;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .password-output {
+        height: 40px;
+        border: 3px solid dodgerblue;
+        margin-bottom: 10px;
+      }
+
+      .selection input {
+        margin-top: 10px;
+      }
+
+      .copy-button {
+        font-size: 16px;
+        color: white;
+        padding: 10px 15px;
+        background-color: dodgerblue;
+        border: none;
+        cursor: pointer;
+      }
+
+      .copy-button:hover {
+        background-color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <form>
+          <div class="password-output margin"></div>
+
+          <input
+            type="range"
+            name="passwordlength"
+            value="0"
+            id="password-length"
+            min="0"
+            max="15"
+            oninput="output.value = passwordlength.value"
+          />
+          <output id="output">0</output>
+
+          <div class="selection">
+
+            <input type="checkbox" name="uppercase" value="upper-true" id="upper-select" />
+            <label for="upper-select">Maiúsculas</label>
+
+            <br>
+
+            <input type="checkbox" name="lowercase" value="lower-true" id="lower-select" />
+            <label for="lower-select">Minúsculas</label>
+
+            <br>
+
+            <input type="checkbox" name="numbers" id="numbers-select" />
+            <label for="numbers-select">Números</label>
+
+            <br>
+
+            <input type="checkbox" name="simbols" id="simbols-select" />
+            <label for="simbols-select">Símbolos</label>
+
+            <br>
+
+            <input type="button" value="Gerar senha" class="copy-button" onclick="gerarSenha()">
+
+            <input type="button" value="Copiar" class="copy-button" onclick="copiarTexto()">
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+
+  <script>
+
+    function gerarSenha() {
+      let passwordSize = document.querySelector("#password-length").value;
+      let upperCaseSelect = document.querySelector("#upper-select");
+      let lowerCaseSelect = document.querySelector("#lower-select");
+      let numbersSelect = document.querySelector("#numbers-select");
+      let simbolsSelect = document.querySelector("#simbols-select");
+
+      if(upperCaseSelect.checked) {
+        var letrasMaiusculas = [];
+          for (var i =0; i < 26; i++) {
+           letrasMaiusculas.push(String.fromCharCode(65 + i));
+          }
+      }
+
+      if(lowerCaseSelect.checked) {
+        var letrasMinusculas = [];
+          for (var i =0; i < 26; i++) {
+           letrasMinusculas.push(String.fromCharCode(97 + i));
+          }
+      }
+
+      // String.fromCharCode(97 + i) gera as letras minúsculas, onde 97 é o código ASCII para 'a'.
+
+      // String.fromCharCode(65 + i) gera as letras maiúsculas, onde 65 é o código ASCII para 'A'.
+
+      if(numbersSelect.checked) {
+        var numeros = [];
+          for (var i; i <10; i++) {
+             numeros.push(i)
+          }
+      }
+      
+      var simbolos = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '{', '}', '[', ']', '|', ';', ':', ',', '.', '<', '>', '/', '?'];
+      
+
+
+    }
+
+    function copiarTexto() {
+      let textDiv = document.querySelector("#password-screen").innerText;
+
+      navigator.clipboard.writeText(textDiv)
+        .then(function() {
+          alert("Texto copiado para a área de transferência");
+        })
+
+        .catch(function (err) {
+          console.error("Erro ao copiar o texto: ", err);
+        })
+
+        // o bloco then é utilizado para lidar com o caso de sucesso (a Promise foi resolvida), enquanto o bloco catch é utilizado para lidar com falhas (a Promise foi rejeitada, indicando um erro).
+    }
+  </script>
+</html>
