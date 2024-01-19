@@ -39,9 +39,12 @@
       }
 
       .password-output {
-        height: 40px;
+        height: 20px;
         border: 3px solid dodgerblue;
         margin-bottom: 10px;
+        padding: 10px 14px;
+        display: flex;
+        align-items: center;
       }
 
       .selection input {
@@ -110,59 +113,5 @@
     </div>
   </body>
 
-  <script>
-
-    function gerarSenha() {
-      let passwordSize = document.querySelector("#password-length").value;
-      let upperCaseSelect = document.querySelector("#upper-select");
-      let lowerCaseSelect = document.querySelector("#lower-select");
-      let numbersSelect = document.querySelector("#numbers-select");
-      let simbolsSelect = document.querySelector("#simbols-select");
-
-      if(upperCaseSelect.checked) {
-        var letrasMaiusculas = [];
-          for (var i =0; i < 26; i++) {
-           letrasMaiusculas.push(String.fromCharCode(65 + i));
-          }
-      }
-
-      if(lowerCaseSelect.checked) {
-        var letrasMinusculas = [];
-          for (var i =0; i < 26; i++) {
-           letrasMinusculas.push(String.fromCharCode(97 + i));
-          }
-      }
-
-      // String.fromCharCode(97 + i) gera as letras minúsculas, onde 97 é o código ASCII para 'a'.
-
-      // String.fromCharCode(65 + i) gera as letras maiúsculas, onde 65 é o código ASCII para 'A'.
-
-      if(numbersSelect.checked) {
-        var numeros = [];
-          for (var i; i <10; i++) {
-             numeros.push(i)
-          }
-      }
-      
-      var simbolos = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '{', '}', '[', ']', '|', ';', ':', ',', '.', '<', '>', '/', '?'];
-      
-
-
-    }
-
-    function copiarTexto() {
-      let textDiv = document.querySelector("#password-screen").innerText;
-
-      navigator.clipboard.writeText(textDiv)
-        .then(function() {
-          alert("Texto copiado para a área de transferência");
-        })
-
-        .catch(function (err) {
-          console.error("Erro ao copiar o texto: ", err);
-        })
-
-        // o bloco then é utilizado para lidar com o caso de sucesso (a Promise foi resolvida), enquanto o bloco catch é utilizado para lidar com falhas (a Promise foi rejeitada, indicando um erro).
-    }
-  </script>
+  <script src="main.js"></script>
 </html>
