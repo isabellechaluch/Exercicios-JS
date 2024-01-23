@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtrar nomes em um array</title>
+
+    <style>
+        body {
+            background-image: linear-gradient(to right, rgb(90, 90, 222), rgb(192, 50, 213));
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box {
+            width: 30rem;
+            background-color: aliceblue;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        .box h1 {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: rgb(42, 44, 44);
+            text-align: center;
+        }
+
+        fieldset {
+            margin: 5px 0;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            padding: 5px 10px;
+            margin: 5px;
+        }
+
+        button {
+            width: fit-content;
+            background-color: rgb(90, 90, 222);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(192, 50, 213);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>Filtrar nomes</h1>
+            <form id="names-form">
+                <fieldset>
+                    <label for="names">Adicione algum nome se desejar:</label>
+                    <input type="text" name="names" id="names-input" placeholder="Digite o nome">
+                    <button type="button" onclick="addName()">Adicionar</button>
+                </fieldset>
+    
+                <fieldset>
+                    <label for="filter">Faça uma busca na lista:</label>
+                    <input type="text" name="filter" id="filter-input" placeholder="Digite o que deseja buscar">
+                    <button type="button" onclick="filterArray()">Filtrar</button>
+                </fieldset>
+            </form>
+
+            <div class="filtered-names">
+                <fieldset>
+                    <ul class="filtered-names-list">
+
+                    </ul>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
