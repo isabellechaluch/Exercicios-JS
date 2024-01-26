@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-color: #4d9f4f;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .margin-b {
+            margin-bottom: 10px;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 90vh;
+            padding: 50px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box {
+            width: 35rem;
+            height: 200px;
+            background-color: aliceblue;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 0 20px;
+        }
+
+        h1 {
+            font-size: 27px;
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        input {
+            padding: 5px 10px;
+            margin: 5px;
+        }
+
+        button {
+            width: fit-content;
+            background-color: #4d9f4f;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: gray;
+            transform: scale(1.05);
+        }
+
+        .output-word, 
+        .output-palindrome {
+            width: 100%;
+            height: 80px;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            border: solid 0.3px #a69b9b;
+        }
+
+        .buttons-box {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        text {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>Verificador de Palíndromos</h1>
+
+            <form class="form margin-b">
+                <label for="word">Digite uma palavra:</label>
+                <input type="text"name="word" id="word-form">
+
+                <button type="button" id="check-button">Verificar</button>
+            </form>
+
+            <div class="output-word"></div>
+        </div>
+
+        <div class="box">
+            <h1>Nossa biblioteca de palíndromos</h1>
+
+            <div class="buttons-box margin-b">
+                <button type="button" id="generate-button">Clique para gerar um palíndromo</button>
+            </div>
+
+            <div class="output-palindrome"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
