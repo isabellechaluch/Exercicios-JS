@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cronometro</title>
+    <title>Timer</title>
 
     <style>
         body {
@@ -13,6 +13,7 @@
             font-family: Arial, Helvetica, sans-serif;
             box-sizing: border-box;
         }
+
         .container {
             width: 100%;
             height: 100vh;
@@ -21,11 +22,13 @@
             justify-content: center;
             align-items: center;
         }
+
         .cronometer-box {
             background-color: rgba(30, 29, 29, 0.699);
             padding: 20px;
             border-radius: 5px;
         }
+
         .cronometer-circle {
             width: 15rem;
             height: 15rem;
@@ -36,21 +39,26 @@
             justify-content: center;
             align-items: center;
         }
+
         form {
             display: flex;
         }
-        form input {
+
+        form input,
+        .display-time {
             width: 32%;
             font-size: 40px;
             color: #fff;
             background-color: transparent;
             border: none;
         }
+
         .buttons-box {
             margin-top: 20px;
             display: flex;
             justify-content: center
         }
+
         button {
             padding: 10px 20px;
             background-color: rgb(241, 220, 245);
@@ -58,15 +66,19 @@
             margin: 0 5px;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #a286ad;
         }
+
         .pause-button {
             display: none;
         }
+
         img {
             width: 15px;
         }
+
         .marked-time-list {
             font-size: 18px;
             color: #fff;
@@ -74,8 +86,16 @@
             list-style: none;
             padding: 0;
         }
+
         .marked-time-list li {
             padding: 5px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .display-time {
+            width: 100%;
         }
     </style>
 </head>
@@ -85,17 +105,15 @@
         <div class="cronometer-box">
             <div class="cronometer-circle">
                 <div class="time">
-                    <form>
+                    <form id="form" style="display: flex;">
                         <input type="number" placeholder="00" name="hour" id="hour-form">
 
                         <input type="number" placeholder="00" name="minute" id="minute-form">
 
-                        <input type="number" placeholder="00"name="seconds" id="second-form">
+                        <input type="number" placeholder="00" name="seconds" id="second-form">
                     </form>
 
-                    <div class="display">
-                        00 : 00 : 00
-                    </div>
+                    <div class="display-time" style="display: none;"></div>
                 </div>
             </div>
 
@@ -104,11 +122,11 @@
                     <img src="icons8-reiniciar-16.png" alt="">
                 </button>
 
-                <button class="play-button">
+                <button class="play-button" style="display: block;">
                     <img src="icons8-reproduzir-30.png" alt="">
                 </button>
 
-                <button class="pause-button">
+                <button class="pause-button" style="display: none;">
                     <img src="icons8-pausa-30.png" alt="">
                 </button>
 
@@ -122,34 +140,32 @@
     </div>
 
     <script>
-        let Hour = document.querySelector("#hour-form").value;
-        let Minutes = document.querySelector("#hour-form").value;
-        let Seconds = document.querySelector("#second-form").value;
-        let display = document.querySelector('.display');
-        let markButton = document.querySelector(".mark-time-button");
-        let markedList = document.querySelector(".marked-time-list");
         let playButton = document.querySelector(".play-button");
         let pauseButton = document.querySelector(".pause-button");
+        let display = document.querySelector('.display-time');
+        let markButton = document.querySelector(".mark-time-button");
         let restartButton = document.querySelector(".restart-button");
-        let time = Hour * 3600 + Minutes * 60 + Seconds; // Converte todo o tempo para segundos
         let displayInterval;
+        let formattedTime;
 
         function start() {
-            pauseButton.style.display = "block";
-            playButton.style.display = "none";
-
+            changeButton();
+            toggleForm();
+            
+            let Hour = document.querySelector("#hour-form").value;
+            let Minutes = document.querySelector("#minute-form").value;
+            let Seconds = document.querySelector("#second-form").value;
+            let currentTime = Hour * 3600 + Minutes * 60 + Seconds; // Converte todo o tempo 
+            
             displayInterval = setInterval(function () {
-                time--; //Reduz do tempo total segundo à segundo
-                if (time == 0) {
+                currentTime--; //Reduz do tempo total segundo à segundo
+                if (currentTime == 0) {
                     alert("Tempo expirado!");
                     clearInterval(displayInterval);
                 }
-                updateDisplay(time);
+                formattedTime = formatTime(currentTime); // Armazena o tempo formatado em uma nova variável
+                display.textContent = formattedTime; // Exibe o tempo formatado
             }, 1000);
-        }
-
-        function updateDisplay () {
-            display.textContent = formatTime(time); // Chama a função que faz a formatação do tempo no visor
         }
 
         function formatTime(actualTime) {
@@ -159,27 +175,43 @@
             return `${hour < 10 ? '0' : ''}${hour} : ${minutes < 10 ? '0' : ''}${minutes} : ${seconds < 10 ? '0' : ''}${seconds}`; // Operador ternário , se minutos e segundos forem menores que 10 add o 0 na frente
         }
 
-        function pauseTime () {
-            pauseButton.style.display = "none";
-            playButton.style.display = "block";
-
+        function pauseTime() {
             clearInterval(displayInterval);
+            changeButton();
         }
 
-        function restartTime () {
-            time = 0;
-            updateDisplay();
+        function restartTime() {
             clearInterval(displayInterval);
-
-            pauseButton.style.display = "none";
-            playButton.style.display = "block";
+            changeButton();
+            toggleForm();
         }
 
-        function markTime () {
-            let newMark;
-            newMark = document.createElement('li');
-            newMark.textContent = formatTime(time);
+        function markTime() {
+            let markedList = document.querySelector(".marked-time-list");
+            let newMark = document.createElement('li');
+            let deleteItem = document.createElement('button');
+            newMark.textContent = formattedTime;
+            deleteItem.textContent = 'Excluir';
+            deleteItem.classList.add('delete-button');
             markedList.appendChild(newMark);
+            newMark.appendChild(deleteItem);
+            deleteItem.addEventListener('click', removeElement);
+        }
+
+        function removeElement () {
+            this.parentNode.parentNode.removeChild(this.parentNode);
+        }
+
+        function changeButton() {
+            playButton.style.display = (playButton.style.display === "block") ? "none" : "block";
+            pauseButton.style.display = (pauseButton.style.display === "none") ? "block" : "none";
+        }
+
+        function toggleForm() {
+            let form = document.querySelector("#form");
+
+            form.style.display = (form.style.display === "flex") ? "none" : "flex";
+            display.style.display = (display.style.display === "none") ? "block" : "none";
         }
 
         playButton.addEventListener('click', start);

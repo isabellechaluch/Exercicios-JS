@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtrar categorias produtos</title>
+
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .filters {
+            margin-bottom: 20px;
+        }
+
+        .produtos {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .produto {
+            width: 200px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .produto h3 {
+            margin-top: 0;
+        }
+
+        .produto p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Produtos</h1>
+        <div class="filters">
+            <label for="filtro">Filtrar por:</label>
+            <select id="filtro">
+                <option value="todos">Todos</option>
+                <option value="tipo">Categoria</option>
+                <option value="cor">Cor</option>
+                <option value="cor">Preço</option>
+            </select>
+        </div>
+        <div id="produtos" class="produtos">
+            <!-- Os produtos serão adicionados dinamicamente aqui -->
+        </div>
+    </div>  
+
+    <script>
+        const produtosContainer = document.getElementById("produtos");
+        const filtroSelect = document.getElementById("filtro");
+        const jaqueta = ["Vestuário","Jeans","60"];
+        const tenis = ["Vestuário","Branco","120"];
+        const colar = ["Acessórios","Dourado","40"];
+        const brinco = ["Acessórios","Prata","50"];
+        const celular = ["Eletrônicos","Preto","1200"];
+        const videogame = ["Eletrônicos","Branco","3000"];
+        const produtos = ["jaqueta","tenis","colar","brinco","celular","videogame"];
+
+        function showProducts () {
+            produtosContainer.innerHTML = "";
+            produtos.forEach(produto => {
+                const produtoDiv = document.createElement("div");
+                produtoDiv.classList.add("produto");
+                produtoDiv.innerHTML = `
+                <h3>${produto[0]}</h3>
+                <p>Tipo: ${produto[1]}</p>
+                <p>Cor: ${produto[2]}</p>
+                
+                // Colocar imagem
+            `;
+                
+                    
+                
+            })
+        }
+    </script>
+</body>
+
+</html>

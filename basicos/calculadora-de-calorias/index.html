@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora de calorias</title>
+</head>
+
+<body>
+    <aside>
+        <h2 style="text-align: center;">Refeições de hoje</h2>
+
+        <div class="food-box">
+            <h3>Nome comida</h3>
+            <p>Hora comida</p>
+            <p>Nome alimento</p>
+        </div>
+    </aside>
+    
+    <div class="container">
+        <h1>Calculadora de calorias</h1>
+
+        <div class="box-calorias-dias">
+            <div class="box">
+                Calorias do dia anterior:
+            </div>
+    
+            <div class="box">
+                Calorias totais de hoje:
+            </div>
+        </div>
+
+        <div class="box">
+            <a href="https://www.tbca.net.br/" target="_blank">Consulte aqui quantas calorias seu alimento tem</a>
+        </div>
+
+        <div class="box">
+            <h2>Adicionar calorias de refeição:</h2>
+            <form class="form">
+                <label for="refeicao">Selecione a refeição:</label>
+                <select id="refeicao" name="refeicao">
+                    <option value="cafe_manha">Café da manhã</option>
+                    <option value="almoco">Almoço</option>
+                    <option value="cafe_tarde">Café da tarde</option>
+                    <option value="janta">Janta</option>
+                </select>
+
+                <label for="meal-time">Insira a hora da refeição:</label>
+                <input type="time" name="time" id="food_form" placeholder="Hora da Refeição">
+
+                <fieldset>
+                    <h3>Adicionar alimento</h3>
+                    <input type="text" name="food-name" id="food_form" placeholder="Nome do alimento">
+
+                    <input type="number" name="food-weight" id="food_form" placeholder="Quantidade em gramas">
+
+                    <input type="number" name="calorie" id="calorie_form" placeholder="Calorias presentes em 1g">
+                </fieldset>
+
+
+
+                <button type="button" id="button_add_form">Adicionar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
