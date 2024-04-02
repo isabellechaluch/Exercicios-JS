@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Reserva de assentos</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+        }
+
+        .container, 
+        .box1, 
+        .box2 {
+            width: 100%;
+        }
+
+        .container {
+            background-image: linear-gradient(to right top, #0b0d11, #041f44, #052c79, #3f2fab, #8219d3);
+            height: 100%;
+            padding: 40px 0;
+            display: grid;
+            place-items: center;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        .box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .results_box,
+        .buttons-box {
+            width: 40%;
+        }
+
+        .box2 {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        form,
+        .show-box,
+        .price-box {
+            width: 33%;
+        }
+
+        input {
+            width: 20%;
+            margin-bottom: 15px;
+        }
+
+        .buttons-box {
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+        }
+
+        button {
+            width: 10rem;
+            padding: 5px 10px;
+            cursor: pointer;
+            color: aliceblue;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            background-color: #3f2fab;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+
+        .results_box {
+            background-color: rgb(236, 233, 233);
+            padding: 15px;
+        }
+
+        #poltronas td {
+            width: 30px;
+            height: 40px;
+            text-align: center;
+            padding: 5px 10px;
+        }
+
+        .selected {
+            color: green;
+        }
+
+        .selected svg {
+            fill: green;
+        }
+
+        .seat-svg {
+            width: 30px;
+            cursor: pointer;
+        }
+
+        .seat-svg:hover {
+            fill: green;
+        }
+
+        .poltrona-vip {
+            fill: goldenrod;
+        }
+
+        .poltrona-economica {
+            fill: teal;
+        }
+
+        .poltrona-deficiente {
+            fill: #052c79;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Reserve sua poltrona no show</h1>
+
+        <div class="box">
+            <div class="box1">
+                <div class="poltronas-disponiveis">
+                    <p>Poltronas disponíveis: 34</p>
+                </div>
+
+                <div class="tabela-preços">
+                    <table border="1">
+                        <tr>
+                            <th colspan="2">Tabela de Preços</th>
+                        </tr>
+                        <tr>
+                            <th>Poltrona</th>
+                            <th>Preço</th>
+                        </tr>
+                        <tr>
+                            <td>Poltrona Normal</td>
+                            <td>R$ 100,00</td>
+                        </tr>
+                        <tr>
+                            <td>Poltrona VIP</td>
+                            <td>R$ 120,00</td>
+                        </tr>
+                        <tr>
+                            <td>Poltrona Econômica</td>
+                            <td>R$ 80,00</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <table id="poltronas"></div>
+            </div>
+
+            <div class="box2">
+                <div class="show_box">
+                    <table border="1" id="selected-chairs">
+                        <tr class="table-column">
+                            <th>Poltronas adicionadas</th>
+                        </tr>
+                    </table>
+
+                    <button type="button" id="confirm-chairs">Confirmar poltronas</button>
+                </div>
+
+                <div class="price-box">O preço é de: </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
