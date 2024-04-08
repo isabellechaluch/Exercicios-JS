@@ -7,8 +7,13 @@
     <style>
         body {
             background-color: indigo;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
             display: grid;
-            place-content: center;
+            place-items: center;
         }
 
         .clock {
@@ -78,23 +83,37 @@
         }
 
         .min:before {
-            background-color: rgb(64, 193, 35);
+            background-color: dimgray;
             z-index: 30;
         }
 
         .sec:before {
             background-color: brown;
             z-index: 40;
+            width: 3px !important;
+        }
+
+        #digital-clock {
+            background-color: azure;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            padding: 10px;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
-    <div class="clock">
-        <div class="hour"></div>
-        <div class="min"></div>
-        <div class="sec"></div>
+    <div class="container">
+        <div class="clock">
+            <div class="hour"></div>
+            <div class="min"></div>
+            <div class="sec"></div>
+        </div>
+
+        <div id="digital-clock"></div>
     </div>
 
-    <div id="digital-clock"></div>
+    <script src="script.js"></script>
 </body>
 </html>
