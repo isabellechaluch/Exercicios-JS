@@ -1,19 +1,20 @@
 function gerarSenha() {
-  let output = document.querySelector(".password-output");
-  let passwordSize = document.querySelector("#password-length").value;
-  let upperCaseSelect = document.querySelector("#upper-select");
-  let lowerCaseSelect = document.querySelector("#lower-select");
-  let numbersSelect = document.querySelector("#numbers-select");
-  let simbolsSelect = document.querySelector("#simbols-select");
+  const output = document.querySelector(".password-output");
+  const passwordSize = document.querySelector("#password-length").value;
+  const upperCaseSelect = document.querySelector("#upper-select");
+  const lowerCaseSelect = document.querySelector("#lower-select");
+  const numbersSelect = document.querySelector("#numbers-select");
+  const symbolsSelect = document.querySelector("#simbols-select");
   let possibleCharacters = "";
   let password = "";
 
-  
-  if (passwordSize == 0) {
+  // Tratamento de erros
+  if (passwordSize == 0 || isNaN(passwordSize)) {
     output.innerText = "A senha deve ser maior que 0!";
     return;
   }
 
+  // Selecionando caracteres possíveis
   if (upperCaseSelect.checked) {
     possibleCharacters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   }
@@ -26,17 +27,19 @@ function gerarSenha() {
     possibleCharacters += "0123456789";
   }
 
-  if (simbolsSelect.checked) {
+  if (symbolsSelect.checked) {
     possibleCharacters += "!@#$%^&*()_-+=<>?/[]{}|";
   }
 
+  // Tratamento de erros- pelo menos uma opção deve ser selecionada
   if (possibleCharacters == "") {
     output.innerText = "Selecione pelo menos uma das opções!";
     return;
   }
 
+  // Gerar a senha
   for (let i = 0; i < passwordSize; i++) {
-    let indice = Math.floor(Math.random() * possibleCharacters.length);
+    let indice = Math.floor(Math.random() * possibleCharacters.length); 
     password += possibleCharacters.charAt(indice);
   }
 
@@ -52,7 +55,7 @@ function copiarTexto() {
     })
 
     .catch(function (err) {
-      console.error("Erro ao copiar o texto: ", err);
+      alert("Erro ao copiar o texto: ", err);
     })
 
   // o bloco then é utilizado para lidar com o caso de sucesso (a Promise foi resolvida), enquanto o bloco catch é utilizado para lidar com falhas (a Promise foi rejeitada, indicando um erro).
