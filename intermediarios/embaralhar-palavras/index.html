@@ -29,10 +29,6 @@
             width: 30rem;
             padding: 20px;
             border-radius: 10px;
-            display: grid;
-            grid-template-rows: 1fr 1fr 1fr;
-            grid-template-columns: 1fr;
-            gap: 10px;
         }
 
         h1 {
@@ -42,6 +38,7 @@
         #word-box {
             text-align: center;
             font-size: 16px;
+            padding: 20px;
         }
 
         form {
@@ -50,13 +47,33 @@
             flex-direction: column;
         }
 
+        label {
+            margin-top: 20px;
+        }
+
         input {
             width: 15rem;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 16px;
             text-transform: uppercase;
             padding: 5px 10px;
+            margin-top: 20px;
+        }
+
+        #check-word, 
+        .restart-button {
+            padding: 5px 10px;
+            background-color: darkcyan;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
             margin-top: 10px;
+            cursor: pointer;
+        }
+
+        #check-word:hover, 
+        .restart-button:hover {
+            background-color: darkslategray;
         }
     </style>
 </head>
@@ -68,27 +85,56 @@
             <div id="word-box"></div>
 
             <form action="">
+                <button type="submit" class="restart-button">Tentar outra palavra</button>
                 <label for="word">Digite a palavra:</label>
                 <input type="text" name="word" id="input-word">
-                <button type="submit" id="check-word"></button>
+                <button type="button" id="check-word">Checar resposta</button>
             </form>
+
+            <div id="result-box"></div>
         </div>
     </div>
 
     <script>
+        let wordBox = document.querySelector("#word-box");
+        let selectedWord;
+        let checkButton = document.querySelector("#check-word");
+        generateWord();
+
         function generateWord() {
-            const palavras = ["girafa", "computador", "banana", "elefante", "carro", "cachorro", "abacaxi", "avião", "chocolate", "morango", "bicicleta", "telefone", "espada", "sorvete", "janela", "sapato", "relógio", "livro", "mesa", "cadeira",
+            const words = ["girafa", "computador", "banana", "elefante", "carro", "cachorro", "abacaxi", "avião", "chocolate", "morango", "bicicleta", "telefone", "espada", "sorvete", "janela", "sapato", "relógio", "livro", "mesa", "cadeira",
                 "folha", "música", "casa", "camiseta", "oculos", "piscina", "dinossauro", "teclado", "piano", "navio",
                 "helicoptero", "caneca", "planta", "lua", "sol", "bicicleta", "quadro", "violin", "macaco", "foguete",
                 "tartaruga", "leão", "tigre", "futebol", "guitarra", "fruta", "papagaio", "sapo", "floresta"];
 
-            let selectedWord = Math.random()
-            
-            for (let i = 0; i < passwordSize; i++) {
-    let indice = Math.floor(Math.random() * possibleCharacters.length); 
-    password += possibleCharacters.charAt(indice);
-  }    
+            // Escolher palavra do array
+            let indice = Math.floor(Math.random() * words.length);
+            selectedWord = words[indice];
+
+            // Embaralhar a palavra
+            let wordArray = selectedWord.split('');
+            for (let i = wordArray.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [wordArray[i], wordArray[j]] = [wordArray[j], wordArray[i]];
+                // Troca os caracteres nas posições i e j no array de caracteres usando uma técnica chamada "destructuring assignment" (atribuição por desestruturação). Isso efetivamente embaralha os caracteres da palavra.
+            }
+            let shuffledWord = wordArray.join(' ').toUpperCase();
+
+            wordBox.innerText = shuffledWord;
         }
+
+        function checkWord() {
+            let inputWord = document.querySelector("#input-word").value;
+            let resultBox = document.querySelector("#result-box");
+
+            if (inputWord == selectedWord) {
+                resultBox.innerText = "Parabéns, você acertou!";
+            } else {
+                resultBox.innerText = "Você errou! Tente de novo";
+            }
+        }
+
+        checkButton.addEventListener('click', checkWord);
     </script>
 </body>
 
