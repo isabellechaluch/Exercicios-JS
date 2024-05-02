@@ -15,15 +15,17 @@ function addNumber() {
     let number = parseFloat(document.querySelector('#number_form').value);
     let formField = document.querySelector('form');
 
-    if (isNaN(number)) {
-        alert('Insira apenas números!');
-    } else {
+    try {
+        if (isNaN(number) && number !== "") throw "Insira algum número!";
+        if (isNaN(number)) throw "Insira apenas números!";
+        
         numbersAdded.push(number); //Add um número ao array
-
         let tableRow = document.createElement("tr");
         tableRow.innerHTML = `<td>${number}</td>`;
         table.appendChild(tableRow);
         formField.reset(); //Reseta o campo do formulário após adicionar o número
+    } catch (error) {
+        window.alert("Erro: " + error);
     }
 };
 

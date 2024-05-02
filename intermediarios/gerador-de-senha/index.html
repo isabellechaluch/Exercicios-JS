@@ -29,8 +29,13 @@
       .box {
         width: 20rem;
         padding: 30px;
+        margin-right: 30px;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      h3 {
+        text-align: center;
       }
 
       form {
@@ -47,7 +52,12 @@
         align-items: center;
       }
 
-      .selection input {
+      #keywords {
+        padding: 10px 5px;
+      }
+
+      .selection input, 
+      input {
         margin-top: 10px;
       }
 
@@ -68,6 +78,57 @@
   <body>
     <div class="container">
       <div class="box">
+        <h3>Gerador de senha segura</h3>
+        <form>
+          <div class="password-output margin"></div>
+
+          <input
+            type="range"
+            name="passwordlength"
+            value="0"
+            id="password-length"
+            min="0"
+            max="15"
+            oninput="output.value = passwordlength.value"
+          />
+          <output id="output">0</output>
+
+          <div class="selection">
+
+            <input type="checkbox" name="uppercase" value="upper-true" id="upper-select" />
+            <label for="upper-select">Maiúsculas</label>
+
+            <br>
+
+            <input type="checkbox" name="lowercase" value="lower-true" id="lower-select" />
+            <label for="lower-select">Minúsculas</label>
+
+            <br>
+
+            <input type="checkbox" name="numbers" id="numbers-select" />
+            <label for="numbers-select">Números</label>
+
+            <br>
+
+            <input type="checkbox" name="simbols" id="simbols-select" />
+            <label for="simbols-select">Símbolos</label>
+
+            <br>
+
+            <input type="checkbox" name="ç" id="ç-select" />
+            <label for="ç">Ç</label>
+
+            <br>
+
+            <input type="button" value="Gerar senha" class="copy-button" onclick="gerarSenha()">
+
+            <input type="button" value="Copiar" class="copy-button" onclick="copiarTexto()">
+          </div>
+        </form>
+      </div>
+
+      <!-- <div class="box">
+        <h3>Seleciona as palavras chave</h3>
         <form>
           <div class="password-output margin"></div>
 
@@ -109,7 +170,7 @@
             <input type="button" value="Copiar" class="copy-button" onclick="copiarTexto()">
           </div>
         </form>
-      </div>
+      </div> -->
     </div>
   </body>
 

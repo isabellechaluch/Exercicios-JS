@@ -5,6 +5,7 @@ function gerarSenha() {
   const lowerCaseSelect = document.querySelector("#lower-select");
   const numbersSelect = document.querySelector("#numbers-select");
   const symbolsSelect = document.querySelector("#simbols-select");
+  const çSelect = document.querySelector("#ç-select");
   let possibleCharacters = "";
   let password = "";
 
@@ -28,7 +29,11 @@ function gerarSenha() {
   }
 
   if (symbolsSelect.checked) {
-    possibleCharacters += "!@#$%^&*()_-+=<>?/[]{}|";
+    possibleCharacters += "!@#$%^&*.()";
+  }
+
+  if (çSelect.checked) {
+    possibleCharacters += "çÇ";
   }
 
   // Tratamento de erros- pelo menos uma opção deve ser selecionada

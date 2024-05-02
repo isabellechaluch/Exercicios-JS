@@ -4,14 +4,18 @@ document.querySelector('#button').addEventListener("click", function () {
     let campoWeight = parseInt(document.querySelector('#weight').value);
     let campoHeight = parseFloat(document.querySelector('#height').value);
     let mostrador = document.querySelector('.mostrador');
-    
-    if (campoName == "" || isNaN(campoWeight) || isNaN(campoHeight) || campoHeight <= 0) {
-        mostrador.textContent = 'Preencha todos os campos com valores válidos!';
-    } else { 
+
+    try {
+        if (campoWeight <=0 || campoHeight <= 0) throw "Os valores de altura e peso devem ser maiores do que 0!";
+        if (campoName == "" || campoWeight == "" || campoHeight == "") throw "Preencha todos os campos!";
+        if (isNaN(campoWeight) || isNaN(campoHeight)) throw "Preencha os campos altura e peso apenas com números!";
+
         const imc = calcularIMC(campoWeight, campoHeight);
         const classificacao = obterClassificacao(imc);
+        mostrador.textContent = `${campoName}, seu IMC é ${imc.toFixed(2)} ${classificacao}`;
 
-        mostrador.textContent = `${campoName}, seu IMC é ${imc.toFixed(2)} ${classificacao}`;       
+    } catch (error) {
+        window.alert('Erro: ' + error);
     }
 
     function calcularIMC(weight, height) {

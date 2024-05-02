@@ -5,9 +5,10 @@ function tab () {
     let number = parseInt(document.querySelector('#number_form').value);
     let show = document.querySelector('.show_box');
 
-    if (isNaN(number) || number == 0) {
-        show.textContent = "Valor inválido! Digite um número inteiro e maior que 0";
-    } else {
+    try {
+        if (isNaN(number)) throw "Digite um número inteiro!";
+        if (number == 0) throw "O número precisa ser maior que 0!";
+        
         let result = '';
         let tabuada = '';
 
@@ -16,9 +17,10 @@ function tab () {
 
             tabuada += `${number} x ${i} = ${result}<br>`;
         }
-
         show.innerHTML = tabuada;
+    } catch (error) {
+        window.alert("Erro: " + error);
     }
-}
+};
 
 button.addEventListener('click', tab);

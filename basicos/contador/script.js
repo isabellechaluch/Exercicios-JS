@@ -6,15 +6,20 @@ function count () {
     let end = parseInt(document.querySelector('#end_form').value)
     let iteracao = parseInt(document.querySelector('#count_form').value);
 
-    if (start == 0 || end == 0 || iteracao == 0) {
-        window.alert("Preencha todos os campos necessários!");
-    } else {
-        let result = '';
-
+    try {
+        if (start === "" || end === "" || iteracao === "") throw "Preencha todos os campos com números!";
+        if (isNaN(start) || isNaN(end) || isNaN(iteracao)) throw "Coloque apenas números!";
+        if (start == 0 || end == 0 || iteracao == 0) throw "Os valores devem ser maiores que 0!";
+        
+        if (start == 0 || end == 0 || iteracao == 0) throw "Os valores devem ser maiores que 0!";
+        let result = "";
         for (let index = start; index <= end; index += iteracao) {
             result += index + " ";
             show.textContent = result;
         }
+       
+    } catch (error) {
+        window.alert("Erro: " + error);
     }
 }
 
